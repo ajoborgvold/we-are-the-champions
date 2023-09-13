@@ -19,7 +19,12 @@ export default function Endorsement() {
                     <p>{itemValue.text}</p>
                     <div className="endorsement-bottom">
                         <p className="bold">From {itemValue.from}</p>
-                            <div onClick={() => handleLikeClick(item)} className="icon-wrapper">
+                            <div 
+                                tabIndex={0}
+                                onClick={() => handleLikeClick(item)}
+                                onKeyDown={e => handleLikeClick(item, e)}
+                                className="icon-wrapper"
+                            >
                                 {itemValue.likes ? 
                                     <FaHeart className="heart-icon"/> : 
                                     <FaRegHeart className="heart-icon"/>

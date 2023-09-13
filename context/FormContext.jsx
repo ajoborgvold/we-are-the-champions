@@ -25,15 +25,12 @@ function FormContextProvider({children}) {
     }, [formData])
     
     useEffect(() => {
-        // console.log('useEffect running')
         onValue(endorsementsInDb, snapshot => {
             if (!snapshot.val()) {
-                // console.log('db empty')
                 return
             }
             else {
                 setEndorsementsToDisplay(Object.entries(snapshot.val()).reverse())
-                // console.log('data in db')
             }
         })
     }, [])
@@ -62,10 +59,12 @@ function FormContextProvider({children}) {
         focusRef.current.focus()
     }
     
-    function handleLikeClick(item) {
-        const updatedLikesCount = item[1].likes === 0 ? 1 : 0
-        const itemInDb = ref(db, `endorsements/${item[0]}`)
-        set(itemInDb, {...item[1], likes: updatedLikesCount})
+    function handleLikeClick(item, e) {
+        if (!e || e.key === 'Enter') {
+            const updatedLikesCount = item[1].likes === 0 ? 1 : 0
+            const itemInDb = ref(db, `endorsements/${item[0]}`)
+            set(itemInDb, {...item[1], likes: updatedLikesCount})
+        }
     }
     
     function clearDatabase() {
