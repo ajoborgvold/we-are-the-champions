@@ -1,2 +1,0 @@
-Question:
-Regarding the useEffect in FormContext.jsx lines 27-39: Why/how is this working? From the three console.log() inside the useEffect, I can tell that the onValue() function is running even when the useEffect itself isn't. I guess I don't yet understand completely how the useEffect hook actually works in React. I thought the first console.log ('useEffect running') would run everytime the onValue function runs. I'm hoping to get some help to better understand the useEffect hook
